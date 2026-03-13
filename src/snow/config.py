@@ -12,8 +12,10 @@ def get_db_path() -> Path:
     xdg_data = os.environ.get("XDG_DATA_HOME")
     if xdg_data:
         base = Path(xdg_data)
-    else:
+    elif (Path.home() / ".local" / "share").exists():
         base = Path.home() / ".local" / "share"
+    else:
+        base = Path.cwd()
     db_dir = base / "snow"
     db_dir.mkdir(parents=True, exist_ok=True)
     return db_dir / "snow.db"
