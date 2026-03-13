@@ -24,7 +24,9 @@ cd snow-mcp-server
 make install
 ```
 
-## OpenCode Integration
+## Client Integration
+
+### OpenCode
 
 Add Snow to your OpenCode configuration (`~/.config/opencode/opencode.json`):
 
@@ -40,7 +42,50 @@ Add Snow to your OpenCode configuration (`~/.config/opencode/opencode.json`):
 }
 ```
 
-Replace `/path/to/snow-mcp-server` with the actual path to this repository.
+### Claude Code
+
+Add Snow to your Claude Code configuration (`~/.config/claude-code/config.json`):
+
+```json
+{
+  "mcpServers": {
+    "snow": {
+      "command": "uv",
+      "args": ["run", "--directory", "/path/to/snow-mcp-server", "python", "-m", "snow.server"]
+    }
+  }
+}
+```
+
+### Cursor
+
+Add Snow to your Cursor configuration. Open Cursor Settings → Features → Model Context Protocol and add:
+
+```json
+{
+  "mcpServers": {
+    "snow": {
+      "command": "uv",
+      "args": ["run", "--directory", "/path/to/snow-mcp-server", "python", "-m", "snow.server"]
+    }
+  }
+}
+```
+
+Or add directly to `~/.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "snow": {
+      "command": "uv",
+      "args": ["run", "--directory", "/path/to/snow-mcp-server", "python", "-m", "snow.server"]
+    }
+  }
+}
+```
+
+Replace `/path/to/snow-mcp-server` with the actual path to this repository in all configurations above.
 
 ## Usage
 
